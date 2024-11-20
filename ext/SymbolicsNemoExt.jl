@@ -58,6 +58,7 @@ function Symbolics.factor_use_nemo(poly::Num)
 end
 
 # Helps with precompilation time
+"""
 PrecompileTools.@setup_workload begin
     @variables a b c x y z
     expr_with_params = expand((x + b)*(x^2 + 2x + 1)*(x^2 - a))
@@ -72,5 +73,6 @@ PrecompileTools.@setup_workload begin
         symbolic_solve(x^10 - a^10, x, dropmultiplicity=false)
     end
 end
+"""
 
 end # module

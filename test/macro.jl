@@ -93,7 +93,7 @@ _args = [[a 2a; 4a 6a; 3a 5a], [4a, 6a]]
 hh = ccwa(_args...)
 @test size(hh) == (3, 2, 10)
 @test eltype(hh) == Real
-@test isequal(arguments(unwrap(hh)), unwrap.(_args))
+@test isequal(arguments(unwrap(hh)), convert(Vector{BasicSymbolic}, map(x -> unwrap.(x), _args)))
 
 @test all(t->getsource(t)[1] === :variables, many_vars)
 @test getdefaultval(t) == 0

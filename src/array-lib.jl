@@ -20,6 +20,7 @@ end
 
 function Base.getindex(x::SymArray, idx...)
     idx = unwrap.(idx)
+    idx = map(i -> isconst(i) ? i.val : i, idx)
     meta = metadata(unwrap(x))
     if iscall(x) && (op = operation(x)) isa Operator
         args = arguments(x)
